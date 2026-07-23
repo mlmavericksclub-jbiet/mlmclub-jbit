@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Mavericks - JBIET AIML Club</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-cyan': '#00FFFF',
+              'brand-pink': '#FF0055',
+              'brand-gray': '#0a0a0a',
+              'brand-dark': '#050505',
+            },
+            fontFamily: {
+              'sans': ['Inter', 'sans-serif'],
+              'mono': ['"Fira Code"', 'monospace'],
+              'display': ['Orbitron', 'sans-serif'],
+            },
+            animation: {
+              'slide-in': 'slide-in 0.5s ease-out forwards',
+            },
+            keyframes: {
+              'slide-in': {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;700;900&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+    <!-- (FIXED) Embedded Styles - NO @apply -->
+    <style>
+      body {
+          font-family: 'Inter', sans-serif;
+          scrollbar-width: thin;
+          scrollbar-color: #333 #0a0a0a;
+      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0a0a0a; }
+      ::-webkit-scrollbar-thumb {
+        background-color: #333;
+        border-radius: 10px;
+        border: 2px solid #0a0a0a;
+      }
+      ::-webkit-scrollbar-thumb:hover { background-color: #555; }
+      
+      .page-container {
+          padding-top: 128px; /* pt-32 */
+          padding-bottom: 96px; /* pb-24 */
+      }
+      
+      .circuit-bg {
+          background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url('https://www.transparenttextures.com/patterns/simple-dashed.png');
+          background-blend-mode: multiply;
+      }
+      .circuit-bg-inv {
+          background-image: linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.9)), url('https://www.transparenttextures.com/patterns/simple-dashed.png');
+          background-blend-mode: multiply;
+      }
+
+      /* Navbar active state */
+      .nav-link.active { color: #FFF; }
+      .nav-link.active::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
+          height: 2px;
+          background-color: #00FFFF;
+          border-radius: 9999px;
+      }
+      .nav-link-mobile.active {
+          color: #00FFFF;
+          background-color: #1f2937;
+      }
+
+      /* Hero Animation */
+      .animate-slide-in {
+          animation: slide-in 0.6s ease-out;
+          animation-fill-mode: forwards;
+          opacity: 0;
+          animation-delay: var(--delay, 0ms);
+      }
+      #neural-canvas-container canvas { display: block; width: 100%; height: 100%; }
+
+      /* Leaderboard Podium */
+      .podium-img {
+          border-color: var(--rank-color);
+          box-shadow: 0 0 20px 0 var(--rank-color);
+      }
+      .podium-info {
+          border-top-color: var(--rank-color);
+      }
+      .podium-rank {
+          background-color: var(--rank-color);
+          color: #111;
+          text-shadow: 0 1px 1px rgba(255,255,255,0.3);
+      }
+    </style>
+</head>
+
+<body class="bg-brand-dark text-gray-200 font-sans">
+
+    <!-- Navbar will be loaded here -->
+    <div data-include="navbar.html"></div>
+
+    <main>
+        <!-- ===== 3D Neural Network Hero ===== -->
+        <section id="home" class="relative h-screen w-full flex items-center justify-center text-center overflow-hidden p-4">
+            <!-- 3D Canvas (will be loaded by main.js) -->
+            <div id="neural-canvas-container" class="absolute top-0 left-0 w-full h-full z-0 opacity-50"></div>
+            
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-brand-dark/10 via-brand-dark/60 to-brand-dark z-10"></div>
+            
+            <div class="relative z-20 max-w-4xl flex flex-col items-center">
+                
+                <img src="./images/logo-transparent.png" 
+                     alt="ML Mavericks Logo" class="h-28 w-28 object-contain drop-shadow-cyan-glow animate-slide-in" style="--delay: 0ms">
+                
+                <h11 class="font-display text-5xl md:text-7xl font-bold text-white tracking-wider my-4 animate-slide-in" style="--delay: 100ms">
+                    MACHINE LEARNING MAVERICKS
+                </h11>
+                <h12 class="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mb-10 animate-slide-in" style="--delay: 200ms">
+                    "Innovate, Learn, Achieve, Excel."
+                </h12>
+                <a href="events.html"
+                   class="cta-button group inline-flex items-center justify-center px-8 py-4 bg-brand-cyan text-black font-bold text-lg rounded-lg transition-all duration-300 hover:bg-white hover:shadow-2xl hover:shadow-brand-cyan/50 focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-offset-2 focus:ring-offset-brand-dark animate-slide-in"
+                   style="--delay: 300ms">
+                    <span>Register for Our Next Event</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== Who We Are (MODIFIED) ===== -->
+        <section id="who-we-are" class="py-24 bg-brand-gray circuit-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Column 1: Who We Are -->
+                <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 md:p-12">
+                    <h12 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">Who We Are</h12>
+                    <p class="text-lg text-gray-300 mb-4">
+                        The Machine Learning Mavericks are the official AIML club of JBIET. We are a passionate community of innovators, thinkers, and builders dedicated to exploring the vast universe of Artificial Intelligence and Machine Learning.
+                    </p>
+                    <p class="text-gray-400">
+                        Our mission is to foster a dynamic environment where students can learn, collaborate, and create cutting-edge technology. We bridge the gap between academic theory and real-world application.
+                    </p>
+                </div>
+                
+                <!-- Column 2: Image (REPLACED Animated Stats) -->
+                <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-4 md:p-8">
+                    <!-- 
+                      !! IMPORTANT !!
+                      PASTE YOUR IMAGE URL HERE
+                      (The one you wanted to replace the "Why Join" cards with)
+                    -->
+                    <img src="./images/logo.jpg" 
+                         alt="Club Activities"
+                         class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== (REMOVED) Image Section ===== -->
+        <!-- This section was removed as per your request -->
+
+        <!-- ===== Visionaries & President (Teaser) ===== -->
+        <section id="visionaries-teaser" class="py-24 bg-brand-gray circuit-bg-inv">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h12 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">Our Visionaries</h12>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto mb-12">Guided by the experienced leadership of JBIET faculty and student leaders.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- HOD Teaser -->
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center">
+                        <img src="./images/secretary.webp" alt="HOD Name" class="w-32 h-32 rounded-full object-cover flex-shrink-0 border-4 border-brand-cyan mb-4">
+                        <p class="text-brand-cyan text-lg font-medium mb-4">Secretary</p>
+                        <h13 class="text-2xl font-bold text-white">Shri. J.V.KRISHNA RAO</h13>
+                        <!-- <p class="text-gray-300 italic">"The ML Mavericks club is a testament to our students' passion for innovation..."</p> -->
+                    </div>
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center">
+                        <img src="./images/director.webp" alt="HOD Name" class="w-32 h-32 rounded-full object-cover flex-shrink-0 border-4 border-brand-cyan mb-4">
+                        <p class="text-brand-cyan text-lg font-medium mb-4">Director</p>
+                        <h13 class="text-2xl font-bold text-white">Dr. CH. SANJAY</h13>
+                        <!-- <p class="text-gray-300 italic">"The ML Mavericks club is a testament to our students' passion for innovation..."</p> -->
+                    </div>
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center">
+                        <img src="./images/principal.webp" alt="HOD Name" class="w-32 h-32 rounded-full object-cover flex-shrink-0 border-4 border-brand-cyan mb-4">
+                        <p class="text-brand-cyan text-lg font-medium mb-4">Principal</p>
+                        <h13 class="text-2xl font-bold text-white">Dr. P.C.KRISHNAMACHARY</h13>
+                        <!-- <p class="text-gray-300 italic">"The ML Mavericks club is a testament to our students' passion for innovation..."</p> -->
+                    </div>
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center">
+                        <img src="./images/hod.jpg" alt="HOD Name" class="w-32 h-32 rounded-full object-cover flex-shrink-0 border-4 border-brand-cyan mb-4">
+                        <p class="text-brand-cyan text-lg font-medium mb-4">Head of Department, AIML</p>
+                        <h13 class="text-2xl font-bold text-white">Dr. Gurrampally Kumar</h13>
+                        <!-- <p class="text-gray-300 italic">"The ML Mavericks club is a testament to our students' passion for innovation..."</p> -->
+                    </div>
+                    <!-- President Teaser -->
+                    <!-- <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center">
+                        <img src="https://placehold.co/400x400/0a0a0a/cccccc?text=President" alt="Club President" class="w-32 h-32 rounded-full object-cover flex-shrink-0 border-4 border-brand-pink mb-4">
+                        <h13 class="text-2xl font-bold text-white">[President's Name]</h13>
+                        <p class="text-brand-pink text-lg font-medium mb-4">President, ML Mavericks</p>
+                        <p class="text-gray-300 italic">"Joining ML Mavericks means joining a family. We're here to learn, to build..."</p>
+                    </div> -->
+                </div>
+                <a href="visionaries.html" class="inline-flex items-center text-brand-cyan font-semibold text-lg mt-12 group">
+                    <span>Meet all our visionaries</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== Latest Workshops/Events (Teaser) ===== -->
+        <section id="events-teaser" class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h12 class="font-display text-3xl md:text-4xl font-bold text-white text-center mb-16">Latest Workshops & Events</h12>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Event Teaser Card 1 -->
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 overflow-hidden group">
+                        <img src="./images/industrial-visit.png" alt="Industrial Visit to ICAR-NAARM" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" onerror="this.src='https://placehold.co/600x400/0a0a0a/00ffff?text=Industrial+Visit+Poster';">
+                        <div class="p-6">
+                            <span class="text-brand-cyan font-mono text-sm">Upcoming Visit</span>
+                            <h13 class="font-display text-2xl font-bold text-white my-2">ICAR-NAARM Visit</h13>
+                            <p class="text-gray-400 mb-4">Explore Artificial Intelligence in the agricultural domain, digital farming, and research management. For 4th year AIML & CSM.</p>
+                            <a href="events.html" class="font-semibold text-brand-pink hover:text-white transition-colors">Register Now &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Event Teaser Card 2 (HackSphere 2026 - Past Event) -->
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 overflow-hidden group opacity-85">
+                        <img src="./images/hacksphere_group_pic.jpg" alt="HackSphere 2026" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="p-6">
+                            <span class="text-gray-500 font-mono text-sm">Past Event</span>
+                            <h13 class="font-display text-2xl font-bold text-white my-2">HackSphere 2026</h13>
+                            <p class="text-gray-400 mb-4">Join Battle Quiz, where sharp minds clash and champions rise. Show your skills, challenge your limits, and prove you're the smartest warrior on campus. Don’t miss it!</p>
+                            <a href="events.html" class="font-semibold text-brand-pink hover:text-white transition-colors">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Event Teaser Card 3 -->
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 overflow-hidden group">
+                        <img src="./images/battle_quiz_GP.jpg" alt="Battle Quiz" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="p-6">
+                            <span class="text-gray-500 font-mono text-sm">Past Event</span>
+                            <h13 class="font-display text-2xl font-bold text-white my-2">Battle Quiz 2025</h13>
+                            <p class="text-gray-400 mb-4">Join Battle Quiz, where sharp minds clash and champions rise. Show your skills, challenge your limits, and prove you're the smartest warrior on campus.Don’t miss it!</p>
+                            <a href="leaderboard.html" class="font-semibold text-brand-pink hover:text-white transition-colors">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Event Teaser Card 2 -->
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 overflow-hidden group">
+                        <img src="./images/1000139922-2.jpg" alt="CodeFest" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="p-6">
+                            <span class="text-gray-500 font-mono text-sm">Past Event</span>
+                            <h13 class="font-display text-2xl font-bold text-white my-2">Yantra Yugantar</h13>
+                            <p class="text-gray-400 mb-4">was a modern, technological tribute inspired by the theme of the National Traditional Day 2025 government initiative.</p>
+                            <a href="leaderboard.html" class="font-semibold text-brand-pink hover:text-white transition-colors">View Details &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Event Teaser Card 3 -->
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 overflow-hidden group">
+                        <img src="./images/4.jpg" alt="Workshop" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="p-6">
+                            <span class="text-gray-500 font-mono text-sm">Past Event</span>
+                            <h13 class="font-display text-2xl font-bold text-white my-2">AI VERSE</h13>
+                            <p class="text-gray-400 mb-4">the event engaged participants through a dynamic treasure hunt featuring stimulating riddles and logic puzzles rather than raw coding tasks.</p>
+                            <a href="leaderboard.html" class="font-semibold text-brand-pink hover:text-white transition-colors">View Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== About College & Departments ===== -->
+        <section id="about-college" class="py-24 bg-brand-gray">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- About JBIET -->
+                <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8">
+                    <h12 class="font-display text-3xl font-bold text-white mb-6">About JBIET</h12>
+                    <p class="text-gray-300 mb-4">
+                        J.B. Institute of Engineering & Technology is a premier institution dedicated to academic excellence. We are committed to fostering innovation and research in technology and engineering.
+                    </p>
+                    <a href="https://jbiet.edu.in/" target="_blank" class="font-medium text-brand-cyan hover:text-white transition-colors">
+                        Learn more at jbiet.edu.in
+                    </a>
+                </div>
+                
+                <!-- Departments -->
+                <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8">
+                    <h12 class="font-display text-3xl font-bold text-white mb-6">Our Ecosystem</h12>
+                    <p class="text-gray-300 mb-6">
+                        ML Mavericks (AIML) is proud to collaborate with other leading departments and clubs at JBIET.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="circuit-tag bg-gray-800 text-brand-cyan text-sm font-mono px-4 py-2 rounded-full border border-gray-700">Jb SAC</span>
+                        <span class="circuit-tag bg-gray-800 text-brand-cyan text-sm font-mono px-4 py-2 rounded-full border border-gray-700">JB Media</span>
+                        <span class="circuit-tag bg-gray-800 text-brand-cyan text-sm font-mono px-4 py-2 rounded-full border border-gray-700">Data Wranglers</span>
+                        <span class="circuit-tag bg-gray-800 text-brand-cyan text-sm font-mono px-4 py-2 rounded-full border border-gray-700">JB Language Club</span>
+                        <span class="circuit-tag bg-gray-800 text-brand-cyan text-sm font-mono px-4 py-2 rounded-full border border-gray-700">Codehub</span>
+                        <span class="circuit-tag bg-gray-800 text-brand-cyan text-sm font-mono px-4 py-2 rounded-full border border-gray-700">Ecohs</span>
+                        <span class="circuit-tag bg-gray-800 text-brand-cyan text-sm font-mono px-4 py-2 rounded-full border border-gray-700">Clique</span>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div data-include="footer.html"></div>
+    
+    <!--
+      ============================
+      ===== JAVASCRIPT LIBS =====
+      ============================
+    -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

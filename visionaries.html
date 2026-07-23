@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visionaries - ML Mavericks</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-cyan': '#00FFFF',
+              'brand-pink': '#FF0055',
+              'brand-gray': '#0a0a0a',
+              'brand-dark': '#050505',
+            },
+            fontFamily: {
+              'sans': ['Inter', 'sans-serif'],
+              'mono': ['"Fira Code"', 'monospace'],
+              'display': ['Orbitron', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;700;900&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+          font-family: 'Inter', sans-serif;
+          scrollbar-width: thin;
+          scrollbar-color: #333 #0a0a0a;
+      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0a0a0a; }
+      ::-webkit-scrollbar-thumb {
+        background-color: #333;
+        border-radius: 10px;
+        border: 2px solid #0a0a0a;
+      }
+      ::-webkit-scrollbar-thumb:hover { background-color: #555; }
+      .circuit-bg {
+          background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), url('https://www.transparenttextures.com/patterns/simple-dashed.png');
+          background-blend-mode: multiply;
+      }
+      .nav-link.active { color: #FFF; }
+      .nav-link.active::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
+          height: 2px;
+          background-color: #00FFFF;
+          border-radius: 9999px;
+      }
+      .nav-link-mobile.active {
+          color: #00FFFF;
+          background-color: #1f2937;
+      }
+    </style>
+</head>
+
+<body class="bg-brand-dark text-gray-200 font-sans">
+
+    <div data-include="navbar.html"></div>
+
+    <main class="page-container pt-32 pb-24 circuit-bg">
+        <section id="visionaries" class="pt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h11 class="font-display text-4xl md:text-5xl font-bold text-white mb-4 block">
+                        Our Visionaries
+                    </h11>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mt-4">
+                        Meet the guiding forces of JBIET and the leadership of the ML Mavericks club.
+                    </p>
+                </div>
+                
+                <div class="mb-20 max-w-4xl mx-auto">
+                    <h12 class="font-display text-3xl font-bold text-white text-center mb-8 block">Secretary</h12>
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 hover:border-brand-cyan/50">
+                        <img src="./images/secretary.webp" alt="Secretary" class="w-40 h-40 rounded-full object-cover flex-shrink-0 border-4 border-brand-cyan shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                        <div>
+                            <h13 class="text-2xl font-bold text-white">Shri. J.V.KRISHNA RAO</h13>
+                            <p class="text-brand-cyan text-lg font-medium mb-4">Secretary, JBES</p>
+                            <p class="text-gray-300 italic">
+                                "Empowering the next generation of innovators through quality education, visionary leadership, and a steadfast commitment to technological advancement."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20 max-w-4xl mx-auto">
+                    <h12 class="font-display text-3xl font-bold text-white text-center mb-8 block">Director</h12>
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 md:p-12 flex flex-col md:flex-row-reverse items-center gap-8 hover:border-brand-pink/50">
+                        <img src="./images/director.webp" alt="Director" class="w-40 h-40 rounded-full object-cover flex-shrink-0 border-4 border-brand-pink shadow-[0_0_15px_rgba(255,0,85,0.3)]">
+                        <div class="md:text-right">
+                            <h13 class="text-2xl font-bold text-white">Dr. CH. SANJAY</h13>
+                            <p class="text-brand-pink text-lg font-medium mb-4">Director, JBIET</p>
+                            <p class="text-gray-300 italic">
+                                "Cultivating a robust ecosystem for research and development to equip our students with the skills needed for a rapidly evolving digital world."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20 max-w-4xl mx-auto">
+                    <h12 class="font-display text-3xl font-bold text-white text-center mb-8 block">Principal</h12>
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 hover:border-brand-cyan/50">
+                        <img src="./images/principal.webp" alt="Principal" class="w-40 h-40 rounded-full object-cover flex-shrink-0 border-4 border-brand-cyan shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                        <div>
+                            <h13 class="text-2xl font-bold text-white">Dr. P.C.KRISHNAMACHARY</h13>
+                            <p class="text-brand-cyan text-lg font-medium mb-4">Principal, JBIET</p>
+                            <p class="text-gray-300 italic">
+                                "Dedicated to fostering academic excellence, bridging the gap between theoretical learning and practical, industry-driven applications."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20 max-w-4xl mx-auto">
+                    <h12 class="font-display text-3xl font-bold text-white text-center mb-8 block">Head of Department, AIML</h12>
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 md:p-12 flex flex-col md:flex-row-reverse items-center gap-8 hover:border-brand-pink/50">
+                        <img src="./images/hod.jpg" alt="HOD" class="w-40 h-40 rounded-full object-cover flex-shrink-0 border-4 border-brand-pink shadow-[0_0_15px_rgba(255,0,85,0.3)]">
+                        <div class="md:text-right">
+                            <h13 class="text-2xl font-bold text-white">Dr. Gurrampally Kumar</h13>
+                            <p class="text-brand-pink text-lg font-medium mb-4">Head of Department, AIML</p>
+                            <p class="text-gray-300 italic">
+                                "The ML Mavericks club is a testament to the innovative spirit of our students. We aim to explore the uncharted territories of Artificial Intelligence."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20 max-w-5xl mx-auto">
+                    <h3 class="font-display text-3xl font-bold text-white text-center mb-8 block">Faculty Coordinators</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        
+                        <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center text-center hover:border-brand-cyan/50">
+                            <img src="./images/sathish_kumar.jpg" alt="Mr. S. Sathish Kumar" class="w-40 h-40 rounded-full object-cover mb-6 border-4 border-brand-cyan shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                            <h4 class="text-2xl font-bold text-white">Mr. S. Sathish Kumar</h4>
+                            <p class="text-brand-cyan text-lg font-medium mb-4">Assistant Professor</p>
+                            <p class="text-gray-400 italic text-sm">
+                                "Guiding our students to transform their theoretical knowledge into practical, real-world solutions."
+                            </p>
+                        </div>
+
+                        <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 flex flex-col items-center text-center hover:border-brand-pink/50">
+                            <img src="./images/chandrashekhar.jpg" alt="Mr. Chandrashekhar" class="w-40 h-40 rounded-full object-cover mb-6 border-4 border-brand-pink shadow-[0_0_15px_rgba(255,0,85,0.3)]">
+                            <h4 class="text-2xl font-bold text-white">Mr. Chandrashekhar</h4>
+                            <p class="text-brand-pink text-lg font-medium mb-4">Assistant Professor</p>
+                            <p class="text-gray-400 italic text-sm">
+                                "Empowering students to push the boundaries of AI and build the technology of tomorrow."
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <h12 class="font-display text-3xl font-bold text-white text-center mb-8 block">Club President</h12>
+                    <div class="glass-card bg-brand-gray/50 backdrop-blur-lg border border-gray-800 rounded-2xl shadow-lg transition-all duration-300 p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 hover:border-brand-cyan/50">
+                        <img src="images/president.jpg" alt="Club President" class="w-40 h-40 rounded-full object-cover flex-shrink-0 border-4 border-brand-cyan shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                        <div>
+                            <h13 class="text-2xl font-bold text-white">[President's Name]</h13>
+                            <p class="text-brand-cyan text-lg font-medium mb-4">President, ML Mavericks</p>
+                            <p class="text-gray-300 italic">
+                                "Joining ML Mavericks means joining a family. We're here to learn, to build amazing things, and to support each other. Let's build the future, together."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="footer.html"></div>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
